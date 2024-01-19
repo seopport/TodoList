@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./App.css";
 
 function App() {
   const box = {
@@ -6,123 +7,136 @@ function App() {
   };
 
   const [tasks, setTasks] = useState([
-    { id: 0, title: "", memo: "", isDone: false },
+    {
+      id: 0,
+      title: "",
+      memo: "",
+      isDone: false,
+    },
   ]);
 
-  const [title, setTitle] = useState("");
+  const [title, seTitle] = useState("");
   const [memo, setMemo] = useState("");
-  const [isDone, setIsDone] = useState(false);
 
   const titleChangeHandler = (e) => {
-    setTitle(e.target.value);
+    seTitle(e.target.value);
   };
-
   const memoChangeHandler = (e) => {
     setMemo(e.target.value);
   };
 
-  const addTaskButtonHandler = () => {
-    //추가 버튼이 눌리면
-    //input에서 받은 title과 메모를 가지고 객체를 생성한 후
-    // 새로운 객체를 만들어서 set
+  const addButtonClickHandler = () => {
+    //인풋에 들어온 값으로 새로운 객체 만들어서 set객체
+    if (title === "") {
+      alert("할일을 입력하세요");
+      return;
+    }
+    if (memo === "") {
+      if (
+        !window.confirm("메모를 입력하지 않았습니다. 할 일을 추가하시겠습니까?")
+      )
+        return;
+    }
     const newTask = {
       id: tasks.length + 1,
       title: title,
       memo: memo,
       isDone: false,
     };
-
     setTasks([...tasks, newTask]);
+    console.log(tasks);
   };
 
-  const deleteTaskButtonHandler = (id) => {
-    // 만들어진 해당 div 요소의 id값이 들어옴
-    const newTasks = tasks.filter((item) => {
-      return item.id !== id; //원래 배열의 id값들과 지금 누른 요소의 id값이 같지 않은 것만 출력
-    });
-    setTasks(newTasks);
-  };
-
-  const doneTaskButtonHandler = (id) => {
+  const doneButtonClickHandler = (id) => {
+    //눌린 요소의 id
     //배열을 받아와서
     //그 배열중에 id가 누른 요소의 id와 일치하는 것만 true로 바꿔서 새로운 객체 만들고 set
-    const newTasks = tasks.map((item) => {
+    const doneTask = tasks.map((item) => {
       if (id === item.id) {
+        //누른 요소만
         return {
-          id: item.id,
-          title: item.title,
-          memo: item.memo,
-          isDone: true,
+          ...item,
+          isDone: true, //isDone을 true로 바꿔라
         };
       } else return item;
     });
-    setTasks(newTasks);
-    // console.log(newTasks[id].isDone);
-
-    //해당 요소의 isdone 상태가 true이면 완료로.
+    setTasks(doneTask); //여기에는 누른요소만 true로바뀐 tasks배열이 들어있음
   };
-
-  const returnTaskButtonHandler = (id) => {
-    // isDone을 다시 false로
-    const newTask = tasks.map((item) => {
-      if (id === item.id) {
-        return { ...item, isDone: false }; //구조분해할당 item의 나머지들 가져오기
-      } else return item;
+  const delButtonClickHandler = (id) => {
+    // 만들어진 해당 div 요소의 id값이 들어옴
+    const newTask = tasks.filter((item) => {
+      return id !== item.id; //원래 배열의 id값들과 지금 누른 요소의 id값이 같지 않은 것만 출력
     });
     setTasks(newTask);
   };
 
+  const returnButtonClickHandler = (id) => {
+    const returnTask = tasks.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          isDone: false,
+        };
+      } else return item;
+    });
+    setTasks(returnTask);
+  };
+
+  const date = new Date().toLocaleString().slice(0, 12);
+
   return (
     <div>
-      <h1>To do List</h1>
-      title <input value={title} onChange={titleChangeHandler} />
-      <br />
-      MEMO <input value={memo} onChange={memoChangeHandler} />
-      <br />
-      <button onClick={addTaskButtonHandler}> 추가 </button>
-      <br />
-      <div style={box}>
-        <p>진행중</p>
-        {/* tasks에 있는 객체들을 배열돌면서 div 추가 */}
-        {tasks
-          .filter((item) => {
-            return item.isDone === false && item.id !== 0;
-          })
-          .map((item) => {
-            return (
-              <div key={item.id}>
-                {item.title} - {item.memo}
-                <button onClick={() => doneTaskButtonHandler(item.id)}>
-                  완료
-                </button>
-                <button onClick={() => deleteTaskButtonHandler(item.id)}>
-                  삭제
-                </button>
-              </div>
-            );
-          })}
-      </div>
-      <br />
-      <div style={box}>
-        <p>완료</p>
-        <div>요소 추가</div>
-        {tasks
-          .filter((item) => {
-            return item.isDone === true;
-          })
-          .map((item) => {
-            return (
-              <div key={item.id}>
-                {item.title} - {item.memo}
-                <button onClick={() => returnTaskButtonHandler(item.id)}>
-                  되돌리기
-                </button>
-                <button onClick={() => deleteTaskButtonHandler(item.id)}>
-                  삭제
-                </button>
-              </div>
-            );
-          })}
+      <hr className="line"></hr>
+      <div>
+        <h1 className="main-title">To do list</h1>
+        <p className="date">{date}</p>
+        <div>
+          제목 <input value={title} onChange={titleChangeHandler} />
+          메모 <input value={memo} onChange={memoChangeHandler} />
+          <button onClick={addButtonClickHandler}>추가</button>
+        </div>
+
+        <div style={box}>
+          <p>진행중</p>
+          {tasks
+            .filter((item) => {
+              return item.isDone === false && item.id !== 0;
+            })
+            .map((item) => {
+              return (
+                <div key={item.id}>
+                  {item.title} - {item.memo}
+                  <button onClick={() => doneButtonClickHandler(item.id)}>
+                    완료
+                  </button>
+                  <button onClick={() => delButtonClickHandler(item.id)}>
+                    삭제
+                  </button>
+                </div>
+              );
+            })}
+        </div>
+
+        <div style={box}>
+          <p>완료</p>
+          {tasks
+            .filter((item) => {
+              return item.isDone === true;
+            })
+            .map((item) => {
+              return (
+                <div key={item.id}>
+                  {item.title} - {item.memo}
+                  <button onClick={() => returnButtonClickHandler(item.id)}>
+                    되돌리기
+                  </button>
+                  <button onClick={() => delButtonClickHandler(item.id)}>
+                    삭제
+                  </button>
+                </div>
+              );
+            })}
+        </div>
       </div>
     </div>
   );
