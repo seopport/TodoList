@@ -15,11 +15,11 @@ function App() {
     },
   ]);
 
-  const [title, seTitle] = useState("");
+  const [title, setTitle] = useState("");
   const [memo, setMemo] = useState("");
 
   const titleChangeHandler = (e) => {
-    seTitle(e.target.value);
+    setTitle(e.target.value);
   };
   const memoChangeHandler = (e) => {
     setMemo(e.target.value);
