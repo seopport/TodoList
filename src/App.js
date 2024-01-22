@@ -52,7 +52,6 @@ function App() {
       isDone: false,
     };
     setTasks([...tasks, newTask]);
-    console.log(`추가했을 때 length ${newTask.id}`);
   };
 
   const doneButtonClickHandler = (id) => {
@@ -77,7 +76,6 @@ function App() {
     });
 
     setTasks(newTask);
-    console.log(`삭제했을 때 length ${newTask.length}`);
   };
 
   const returnButtonClickHandler = (id) => {
@@ -134,9 +132,7 @@ function App() {
               .map((item) => {
                 return (
                   <div key={item.id} className="task-box">
-                    <div className="title-in-task-box">
-                      {item.title}, {item.id}
-                    </div>
+                    <div className="title-in-task-box">{item.title}</div>
                     <hr className="hr2"></hr>
                     <div className="memo-in-task-box">{item.memo}</div>
                     <div className="btn-wrap">
@@ -169,9 +165,7 @@ function App() {
               .map((item) => {
                 return (
                   <div key={item.id} className="task-box">
-                    <div className="title-in-task-box">
-                      {item.title}, {item.id}
-                    </div>
+                    <div className="title-in-task-box">{item.title}</div>
                     <hr className="hr2"></hr>
                     <div className="memo-in-task-box">{item.memo}</div>
                     <div className="btn-wrap">
