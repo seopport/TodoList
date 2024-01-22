@@ -22,6 +22,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  --main-color-green: #738a6f;
+  --main-color-beige: #fef9ed;
 }
 
 h1 {
@@ -32,20 +34,22 @@ h1 {
 }
 
 .main-title {
-  color: #fef9ed;
+  color: var(--main-color-beige);
   stroke: 1px solid black;
   margin-bottom: 15px;
+  letter-spacing: 1px;
 }
 
 .date {
-  color: #fef9ed;
+  color: var(--main-color-beige);
   margin: 0;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   font-size: 15px;
+  font-style: italic;
 }
 
 .line {
-  color: #fef9ed;
+  color: var(--main-color-beige);
   margin-top: 40px;
   width: 800px;
   opacity: 60%;
@@ -64,6 +68,7 @@ h1 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 50px;
 }
 
 .task-input-box {
@@ -74,7 +79,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fef9ed;
+  background-color: var(--main-color-beige);
   position: relative;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
@@ -129,8 +134,8 @@ h1 {
 }
 
 .add-btn:hover {
-  transform: scale(1.1); /* 1.2배 확대 */
-  transition: transform 0.1s ease-in-out; /* 변화를 부드럽게 만들기 위한 트랜지션 추가 */
+  transform: scale(1.1);
+  transition: transform 0.1s ease-in-out;
 }
 
 .task {
@@ -209,7 +214,7 @@ h1 {
   font-family: "NanumSquareNeo-Variable";
   height: 120px;
   width: 200px;
-  background-color: #fef9ed;
+  background-color: var(--main-color-beige);
   border: 1px solid black;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   margin-top: 18px;
@@ -252,4 +257,12 @@ h1 {
   position: absolute;
   bottom: 12px;
   right: 15px;
+}
+
+.line-bottom {
+  color: var(--main-color-beige);
+  margin-top: 40px;
+  width: 800px;
+  opacity: 60%;
+  float: bottom;
 }

@@ -3,6 +3,7 @@ import "./App.css";
 import { PencilLine, Pin } from "lucide-react";
 import { PiPenNib } from "react-icons/pi";
 import { BsFillPinAngleFill } from "react-icons/bs";
+import "animate.css";
 
 function App() {
   const box = {
@@ -31,7 +32,7 @@ function App() {
   const addButtonClickHandler = () => {
     //인풋에 들어온 값으로 새로운 객체 만들어서 set객체
     if (title === "") {
-      alert("할일을 입력하세요");
+      alert("할 일을 입력하세요");
       return;
     }
     if (memo === "") {
@@ -40,14 +41,18 @@ function App() {
       )
         return;
     }
+
+    const lastIndexOfId = tasks.slice(-1)[0].id;
+    console.log(lastIndexOfId);
+
     const newTask = {
-      id: tasks.length + 1, //마지막 요소의 아이디에 + 1
+      id: lastIndexOfId + 1, //마지막 요소의 아이디에 + 1
       title: title,
       memo: memo,
       isDone: false,
     };
     setTasks([...tasks, newTask]);
-    console.log(tasks);
+    console.log(`추가했을 때 length ${newTask.id}`);
   };
 
   const doneButtonClickHandler = (id) => {
@@ -70,7 +75,9 @@ function App() {
     const newTask = tasks.filter((item) => {
       return id !== item.id; //원래 배열의 id값들과 지금 누른 요소의 id값이 같지 않은 것만 출력
     });
+
     setTasks(newTask);
+    console.log(`삭제했을 때 length ${newTask.length}`);
   };
 
   const returnButtonClickHandler = (id) => {
@@ -97,7 +104,6 @@ function App() {
 
         <p className="date">{date}</p>
         <div className="task-input-box">
-          {/* <BsFillPinAngleFill className="pin" /> */}
           <span className="task">TASK</span>
 
           <input
@@ -109,7 +115,7 @@ function App() {
           <textarea
             value={memo}
             onChange={memoChangeHandler}
-            placeholder="Memo..."
+            placeholder="Memo"
           />
 
           <PiPenNib onClick={addButtonClickHandler} className="add-btn" />
@@ -128,7 +134,9 @@ function App() {
               .map((item) => {
                 return (
                   <div key={item.id} className="task-box">
-                    <div className="title-in-task-box">{item.title}</div>
+                    <div className="title-in-task-box">
+                      {item.title}, {item.id}
+                    </div>
                     <hr className="hr2"></hr>
                     <div className="memo-in-task-box">{item.memo}</div>
                     <div className="btn-wrap">
@@ -161,7 +169,9 @@ function App() {
               .map((item) => {
                 return (
                   <div key={item.id} className="task-box">
-                    <div className="title-in-task-box">{item.title}</div>
+                    <div className="title-in-task-box">
+                      {item.title}, {item.id}
+                    </div>
                     <hr className="hr2"></hr>
                     <div className="memo-in-task-box">{item.memo}</div>
                     <div className="btn-wrap">
@@ -184,7 +194,7 @@ function App() {
           </div>
         </div>
       </div>
-      <hr className="line" style={{ marginBottom: "40px" }}></hr>
+      {/* <hr className="line-bottom" style={{ marginBottom: "40px" }}></hr> */}
     </div>
   );
 }
