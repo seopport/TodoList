@@ -91,7 +91,10 @@ function App() {
     <div className="main-wrap">
       <hr className="line"></hr>
       <div className="content-wrap">
-        <h1 className="main-title">To do List🌿</h1>
+        <h1 className="main-title">
+          To do List<span className="leaf">🌿</span>
+        </h1>
+
         <p className="date">{date}</p>
         <div className="task-input-box">
           <BsFillPinAngleFill className="pin" />
@@ -106,7 +109,7 @@ function App() {
           <textarea
             value={memo}
             onChange={memoChangeHandler}
-            placeholder="Memo..."
+            placeholder="Memo"
           />
 
           <PiPenNib onClick={addButtonClickHandler} className="add-btn" />

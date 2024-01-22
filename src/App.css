@@ -20,6 +20,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .main-title {
@@ -90,10 +91,6 @@ textarea {
   border-radius: 1px;
 }
 
-textarea::placeholder {
-  font-style: italic;
-}
-
 .task {
   display: block;
   font-size: 30px;
@@ -109,6 +106,12 @@ h1 {
   right: 15px;
   width: 23px;
   height: 23px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  transform: scale(1.1); /* 1.2배 확대 */
+  transition: transform 0.1s ease-in-out; /* 변화를 부드럽게 만들기 위한 트랜지션 추가 */
 }
 
 .task {
@@ -123,4 +126,10 @@ h1 {
   top: -20px;
   left: 47%;
   transform: rotate(-20deg);
+}
+
+.leaf {
+  display: inline-block;
+  position: absolute;
+  left: 100%;
 }
