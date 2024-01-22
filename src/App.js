@@ -6,10 +6,6 @@ import { BsFillPinAngleFill } from "react-icons/bs";
 import "animate.css";
 
 function App() {
-  const box = {
-    border: "1px solid green",
-  };
-
   const [tasks, setTasks] = useState([
     {
       id: 0,
@@ -52,6 +48,8 @@ function App() {
       isDone: false,
     };
     setTasks([...tasks, newTask]);
+    setTitle("");
+    setMemo("");
   };
 
   const doneButtonClickHandler = (id) => {
@@ -97,26 +95,26 @@ function App() {
       <hr className="line"></hr>
       <div className="content-wrap">
         <h1 className="main-title">
-          To do List<span className="leaf">🌿</span>
+          To Do List<span className="leaf">🌿</span>
         </h1>
 
         <p className="date">{date}</p>
         <div className="task-input-box">
-          <span className="task">TASK</span>
-
-          <input
-            value={title}
-            onChange={titleChangeHandler}
-            placeholder="Enter your to-do here"
-          />
-
+          <span className="task">Task</span>
+          <div className="input-wrap">
+            <input
+              value={title}
+              onChange={titleChangeHandler}
+              placeholder="Enter your to-do here"
+            ></input>
+            <PiPenNib onClick={addButtonClickHandler} className="add-btn" />
+          </div>
           <textarea
             value={memo}
             onChange={memoChangeHandler}
             placeholder="Memo"
           />
 
-          <PiPenNib onClick={addButtonClickHandler} className="add-btn" />
           {/* <PencilLine onClick={addButtonClickHandler} className="add-btn" /> */}
         </div>
 
