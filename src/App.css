@@ -1,16 +1,24 @@
+@font-face {
+  font-family: "NanumSquareNeo-Variable";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
-  font-family: "Inria Sans", sans-serif;
+  font-family: "NanumSquareNeo-Variable";
 }
 
 body {
   display: flex;
   justify-content: center;
-  background-color: #6d876e;
+  background-color: #738a6f;
 }
 
 #root {
   width: 800px;
-  background-color: #6d876e;
+  background-color: #738a6f;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,22 +34,25 @@ h1 {
 .main-title {
   color: #fef9ed;
   stroke: 1px solid black;
+  margin-bottom: 15px;
 }
 
 .date {
   color: #fef9ed;
   margin: 0;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
+  font-size: 15px;
 }
 
 .line {
   color: #fef9ed;
   margin-top: 40px;
   width: 800px;
+  opacity: 60%;
 }
 
 .content-wrap {
-  width: 480px;
+  width: 530px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -67,6 +78,7 @@ h1 {
   position: relative;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
+  margin-bottom: 50px;
 }
 
 input {
@@ -76,8 +88,9 @@ input {
   border: none;
   outline: none;
   border-bottom: 1px solid black;
-  padding: 5px;
+  padding: 5px 5px 7px 5px;
   box-sizing: border-box;
+  text-align: center;
 }
 
 textarea {
@@ -91,9 +104,15 @@ textarea {
   border-radius: 1px;
 }
 
+textarea::placeholder {
+  font-size: 13px;
+}
+
 .task {
   display: block;
   font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 h1 {
@@ -132,4 +151,105 @@ h1 {
   display: inline-block;
   position: absolute;
   left: 100%;
+}
+
+.tasks-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.in-progress-tag {
+  font-size: 14px;
+  border: 1px solid black;
+  height: 30px;
+  width: 200px;
+  line-height: 100%;
+  background-color: #fee9b2;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.done-tag {
+  font-size: 14px;
+  border: 1px solid black;
+  height: 30px;
+  width: 200px;
+  line-height: 100%;
+  background-color: #faaf98;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.in-progress-circle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #ffce22;
+  border: 1px solid black;
+  border-radius: 40px;
+  margin: 0 7px 0 8px;
+}
+
+.done-circle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #f65835;
+  border: 1px solid black;
+  border-radius: 40px;
+  margin: 0 7px 0 8px;
+}
+
+.task-box {
+  font-family: "NanumSquareNeo-Variable";
+  height: 120px;
+  width: 200px;
+  background-color: #fef9ed;
+  border: 1px solid black;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 18px;
+  padding: 12px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.hr2 {
+  border: 0.2px solid black;
+  margin: 8px 0 10px 0;
+}
+
+.memo-in-task-box {
+  font-family: "NanumSquareNeo-Variable";
+  font-size: 12px;
+  margin: 0 3px;
+}
+
+.title-in-task-box {
+  font-family: "NanumSquareNeo-Variable";
+  font-size: 13px;
+  font-weight: bold;
+  margin: 5px 3px 0 3px;
+}
+
+.task-progress-btn {
+  font-family: "NanumSquareNeo-Variable";
+  background-color: transparent;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+  position: absolute;
+  bottom: 12px;
+  right: 15px;
 }

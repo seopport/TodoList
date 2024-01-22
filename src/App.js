@@ -41,7 +41,7 @@ function App() {
         return;
     }
     const newTask = {
-      id: tasks.length + 1,
+      id: tasks.length + 1, //마지막 요소의 아이디에 + 1
       title: title,
       memo: memo,
       isDone: false,
@@ -97,7 +97,7 @@ function App() {
 
         <p className="date">{date}</p>
         <div className="task-input-box">
-          <BsFillPinAngleFill className="pin" />
+          {/* <BsFillPinAngleFill className="pin" /> */}
           <span className="task">TASK</span>
 
           <input
@@ -109,55 +109,82 @@ function App() {
           <textarea
             value={memo}
             onChange={memoChangeHandler}
-            placeholder="Memo"
+            placeholder="Memo..."
           />
 
           <PiPenNib onClick={addButtonClickHandler} className="add-btn" />
           {/* <PencilLine onClick={addButtonClickHandler} className="add-btn" /> */}
         </div>
 
-        <div style={box}>
-          <p>진행중</p>
-          {tasks
-            .filter((item) => {
-              return item.isDone === false && item.id !== 0;
-            })
-            .map((item) => {
-              return (
-                <div key={item.id}>
-                  {item.title} - {item.memo}
-                  <button onClick={() => doneButtonClickHandler(item.id)}>
-                    완료
-                  </button>
-                  <button onClick={() => delButtonClickHandler(item.id)}>
-                    삭제
-                  </button>
-                </div>
-              );
-            })}
-        </div>
+        <div className="tasks-wrap">
+          <div>
+            <div className="in-progress-tag">
+              <div className="in-progress-circle"></div>In progress
+            </div>
+            {tasks
+              .filter((item) => {
+                return item.isDone === false && item.id !== 0;
+              })
+              .map((item) => {
+                return (
+                  <div key={item.id} className="task-box">
+                    <div className="title-in-task-box">{item.title}</div>
+                    <hr className="hr2"></hr>
+                    <div className="memo-in-task-box">{item.memo}</div>
+                    <div className="btn-wrap">
+                      <button
+                        className="task-progress-btn"
+                        onClick={() => doneButtonClickHandler(item.id)}
+                      >
+                        완료
+                      </button>
+                      <button
+                        className="task-progress-btn"
+                        onClick={() => delButtonClickHandler(item.id)}
+                      >
+                        삭제
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
 
-        <div style={box}>
-          <p>완료</p>
-          {tasks
-            .filter((item) => {
-              return item.isDone === true;
-            })
-            .map((item) => {
-              return (
-                <div key={item.id}>
-                  {item.title} - {item.memo}
-                  <button onClick={() => returnButtonClickHandler(item.id)}>
-                    되돌리기
-                  </button>
-                  <button onClick={() => delButtonClickHandler(item.id)}>
-                    삭제
-                  </button>
-                </div>
-              );
-            })}
+          <div>
+            <div className="done-tag">
+              <div className="done-circle"></div>Done
+            </div>
+            {tasks
+              .filter((item) => {
+                return item.isDone === true;
+              })
+              .map((item) => {
+                return (
+                  <div key={item.id} className="task-box">
+                    <div className="title-in-task-box">{item.title}</div>
+                    <hr className="hr2"></hr>
+                    <div className="memo-in-task-box">{item.memo}</div>
+                    <div className="btn-wrap">
+                      <button
+                        className="task-progress-btn"
+                        onClick={() => returnButtonClickHandler(item.id)}
+                      >
+                        되돌리기
+                      </button>
+                      <button
+                        className="task-progress-btn"
+                        onClick={() => delButtonClickHandler(item.id)}
+                      >
+                        삭제
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
         </div>
       </div>
+      <hr className="line" style={{ marginBottom: "40px" }}></hr>
     </div>
   );
 }
