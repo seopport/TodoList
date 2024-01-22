@@ -103,6 +103,7 @@ function App() {
           <span className="task">Task</span>
           <div className="input-wrap">
             <input
+              maxLength={13}
               value={title}
               onChange={titleChangeHandler}
               placeholder="Enter your to-do here"

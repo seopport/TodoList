@@ -210,7 +210,6 @@ h1 {
 
 .task-box {
   font-family: "NanumSquareNeo-Variable";
-  height: 120px;
   width: 200px;
   background-color: var(--main-color-beige);
   border: 1px solid black;
@@ -230,6 +229,9 @@ h1 {
   font-family: "NanumSquareNeo-Variable";
   font-size: 12px;
   margin: 0 3px;
+  word-wrap: break-word;
+  min-height: 30px;
+  margin-bottom: 25px;
 }
 
 .title-in-task-box {
