@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
+import { PencilLine, Pin } from "lucide-react";
+import { PiPenNib } from "react-icons/pi";
+import { BsFillPinAngleFill } from "react-icons/bs";
 
 function App() {
   const box = {
@@ -85,15 +88,29 @@ function App() {
   const date = new Date().toLocaleString().slice(0, 12);
 
   return (
-    <div>
+    <div className="main-wrap">
       <hr className="line"></hr>
-      <div>
-        <h1 className="main-title">To do list</h1>
+      <div className="content-wrap">
+        <h1 className="main-title">To do List🌿</h1>
         <p className="date">{date}</p>
-        <div>
-          제목 <input value={title} onChange={titleChangeHandler} />
-          메모 <input value={memo} onChange={memoChangeHandler} />
-          <button onClick={addButtonClickHandler}>추가</button>
+        <div className="task-input-box">
+          <BsFillPinAngleFill className="pin" />
+          <span className="task">TASK</span>
+
+          <input
+            value={title}
+            onChange={titleChangeHandler}
+            placeholder="Enter your to-do here"
+          />
+
+          <textarea
+            value={memo}
+            onChange={memoChangeHandler}
+            placeholder="Memo..."
+          />
+
+          <PiPenNib onClick={addButtonClickHandler} className="add-btn" />
+          {/* <PencilLine onClick={addButtonClickHandler} className="add-btn" /> */}
         </div>
 
         <div style={box}>

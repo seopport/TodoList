@@ -1,3 +1,7 @@
+* {
+  font-family: "Inria Sans", sans-serif;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -25,10 +29,98 @@ h1 {
 
 .date {
   color: #fef9ed;
+  margin: 0;
+  margin-bottom: 40px;
 }
 
 .line {
   color: #fef9ed;
-  margin-top: 60px;
+  margin-top: 40px;
   width: 800px;
+}
+
+.content-wrap {
+  width: 480px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.task-input-box {
+  width: 360px;
+  padding: 20px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fef9ed;
+  position: relative;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+}
+
+input {
+  background-color: transparent;
+  margin: 20px 0 20px 0;
+  width: 80%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+textarea {
+  background-color: transparent;
+  resize: none;
+  width: 80%;
+  border: 1px solid black;
+  height: 100px;
+  padding: 11px 15px 15px 15px;
+  box-sizing: border-box;
+  border-radius: 1px;
+}
+
+textarea::placeholder {
+  font-style: italic;
+}
+
+.task {
+  display: block;
+  font-size: 30px;
+}
+
+h1 {
+  margin-bottom: 8px;
+}
+
+.add-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 23px;
+  height: 23px;
+}
+
+.task {
+  font-size: 23px;
+  margin-top: 15px;
+}
+
+.pin {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: -20px;
+  left: 47%;
+  transform: rotate(-20deg);
 }
