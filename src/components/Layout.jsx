@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
-import InProgressTasks from "./InProgressTasks.jsx";
-import DoneTasks from "./DoneTasks.jsx";
+import Tasks from "./Tasks.jsx";
 import TaskInputBox from "./TaskInputBox.jsx";
 
 const Layout = () => {
@@ -42,22 +41,16 @@ const Layout = () => {
                         <div className="in-progress-tag">
                             <div className="in-progress-circle"></div>In progress
                         </div>
-                        <InProgressTasks
-                            tasks={tasks}
-                            setTasks={setTasks}
-                            delButtonClickHandler={delButtonClickHandler}
-                        />
+                        <Tasks tasks={tasks} setTasks={setTasks} isDone={false} />
+                        {/* isDone이 false인것들만 filter돼서 렌더링 */}
+
                     </div>
 
                     <div>
                         <div className="done-tag">
                             <div className="done-circle"></div>Done
                         </div>
-                        <DoneTasks
-                            tasks={tasks}
-                            setTasks={setTasks}
-                            delButtonClickHandler={delButtonClickHandler}
-                        />
+                        <Tasks tasks={tasks} setTasks={setTasks} isDone={true} />
                     </div>
                 </div>
             </div>
