@@ -1,7 +1,7 @@
 # To Do List🌿
 
-React를 이용한 To Do List 만들기 
-[To Do List🌿](https://todo-list-seopport.vercel.app/) 
+React를 이용한 To Do List 만들기 [ [To Do List🌿](https://todo-list-seopport.vercel.app/) ]
+
 
 <br>
 
@@ -23,7 +23,8 @@ React를 이용한 To Do List 만들기
 - **Environment :** vscode, github
 - **Development :** React, Javascript, HTML, CSS
 - **Library :** [react-icons](https://react-icons.github.io/react-icons/)
-- **Design** : Figma
+- **Design :** Figma
+- **Deployment:** Vercel - [ [To Do List🌿](https://todo-list-seopport.vercel.app/) ]
 
 
 
