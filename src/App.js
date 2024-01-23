@@ -26,8 +26,11 @@ function App() {
 
   const addButtonClickHandler = () => {
     //인풋에 들어온 값으로 새로운 객체 만들어서 set객체
+
     if (title === "") {
       alert("할 일을 입력하세요");
+      const input = document.getElementById("Input");
+      input.focus();
       return;
     }
     if (memo === "") {

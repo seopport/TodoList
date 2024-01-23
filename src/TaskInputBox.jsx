@@ -5,7 +5,7 @@ const TaskInputBox = ({title, titleChangeHandler, addButtonClickHandler, memo, m
         <div className="task-input-box">
           <span className="task">Task</span>
           <div className="input-wrap">
-            <input
+            <input id="Input" autoFocus
               maxLength={13}
               value={title}
               onChange={titleChangeHandler}
