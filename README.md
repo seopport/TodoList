@@ -81,7 +81,7 @@ yarn start
 
   
 
-+ 할 일 진행 상태
++ 할 일
 
   + 할 일의 상태를 In progress(진행중), Done(완료됨)으로 전환할 수 있습니다.
   + In progress 영역의 할 일을 완료 버튼을 누르면 Done 영역으로 넘어갑니다.
