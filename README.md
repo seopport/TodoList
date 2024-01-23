@@ -105,13 +105,39 @@ yarn start
 ### 🚦 트러블 슈팅
 
   #### **1. 문제**
+  할 일을 추가, 삭제하는 과정에서 발생한 버그로, 할 일의 id가 겹쳐서 요소들이 겹쳐서 넘어가는 현상이 발생했습니다.
 
 
   #### **2. 시도**
+  코드를 분석하여 Task가 중복되는 이유를 찾아보았고, id를 부여하는 부분에서 발생한 문제임을 확인했습니다.
+  기존 코드는 id에 task배열의 길이에 1을 더하는 방식으로 작성했습니다.
+  ```jsx
+const newTask = {
+      id: tasks.length + 1,
+      title: title,
+      memo: memo,
+      isDone: false,
+    };
+```
+버그 발생 이유는 다음과 같았습니다.
+1. 할 일을 3번 추가했을 때, 각각의 할 일은 id(length)가 2, 3, 4인 요소로 추가된다.
+2. 두 번째 할 일을 삭제하면 length는 3이 된다.
+3. 그 후에 추가된 할 일의 id를 length+1로 설정하여 추가하면 id가 4가 된다.
+4. 하지만 이미 id가 4인 요소가 존재하기 때문에 id가 겹치게 된다.
 
   #### **3. 해결방안**
+  기존 배열의 길이에 1을 더하는 것이 아니라, 마지막 Task의 id를 가져와 그 값에 1을 더해 새로운 Task배열에 추가하도록 수정했습니다.
+```js
+const lastIndexOfId = tasks.slice(-1)[0].id;
+console.log(lastIndexOfId);
 
-#### **4. 선택한 방법**
+const newTask = {
+      id: lastIndexOfId + 1, //마지막 요소의 아이디에 + 1
+      title: title,
+      memo: memo,
+      isDone: false,
+    };
+```
 
 
 
