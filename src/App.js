@@ -25,8 +25,6 @@ function App() {
   };
 
   const addButtonClickHandler = () => {
-    //인풋에 들어온 값으로 새로운 객체 만들어서 set객체
-
     if (title.trim() === "") {
       alert("할 일을 입력하세요");
       const input = document.getElementById("Input");
@@ -55,24 +53,19 @@ function App() {
   };
 
   const doneButtonClickHandler = (id) => {
-    //눌린 요소의 id
-    //배열을 받아와서
-    //그 배열중에 id가 누른 요소의 id와 일치하는 것만 true로 바꿔서 새로운 객체 만들고 set
     const doneTask = tasks.map((item) => {
       if (id === item.id) {
-        //누른 요소만
         return {
           ...item,
-          isDone: true, //isDone을 true로 바꿔라
+          isDone: true,
         };
       } else return item;
     });
-    setTasks(doneTask); //여기에는 누른요소만 true로바뀐 tasks배열이 들어있음
+    setTasks(doneTask);
   };
   const delButtonClickHandler = (id) => {
-    // 만들어진 해당 div 요소의 id값이 들어옴
     const newTask = tasks.filter((item) => {
-      return id !== item.id; //원래 배열의 id값들과 지금 누른 요소의 id값이 같지 않은 것만 출력
+      return id !== item.id;
     });
 
     setTasks(newTask);
@@ -128,26 +121,6 @@ function App() {
                       delButtonClickHandler={delButtonClickHandler}
                     />
                   </>
-                  //   {/* 컴포넌트 분리 부분
-                  // <div key={item.id} className="task-box">
-                  //   <div className="title-in-task-box">{item.title}</div>
-                  //   <hr className="hr2"></hr>
-                  //   <div className="memo-in-task-box">{item.memo}</div>
-                  //   <div className="btn-wrap">
-                  //     <button
-                  //       className="task-progress-btn"
-                  //       onClick={() => doneButtonClickHandler(item.id)}
-                  //     >
-                  //       완료
-                  //     </button>
-                  //     <button
-                  //       className="task-progress-btn"
-                  //       onClick={() => delButtonClickHandler(item.id)}
-                  //     >
-                  //       삭제
-                  //     </button>
-                  //   </div> */}
-                  // </div>
                 );
               })}
           </div>
@@ -169,25 +142,6 @@ function App() {
                       delButtonClickHandler={delButtonClickHandler}
                     />
                   </>
-                  // <div key={item.id} className="task-box">
-                  //   <div className="title-in-task-box">{item.title}</div>
-                  //   <hr className="hr2"></hr>
-                  //   <div className="memo-in-task-box">{item.memo}</div>
-                  //   <div className="btn-wrap">
-                  //     <button
-                  //       className="task-progress-btn"
-                  //       onClick={() => returnButtonClickHandler(item.id)}
-                  //     >
-                  //       되돌리기
-                  //     </button>
-                  //     <button
-                  //       className="task-progress-btn"
-                  //       onClick={() => delButtonClickHandler(item.id)}
-                  //     >
-                  //       삭제
-                  //     </button>
-                  //   </div>
-                  // </div>
                 );
               })}
           </div>

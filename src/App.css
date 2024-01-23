@@ -26,16 +26,12 @@ body {
   --main-color-beige: #fef9ed;
 }
 
-h1 {
+.main-title {
+  color: var(--main-color-beige);
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-}
-
-.main-title {
-  color: var(--main-color-beige);
-  stroke: 1px solid black;
   margin-bottom: 15px;
   letter-spacing: 1px;
 }
@@ -95,7 +91,6 @@ input {
   border-bottom: 1px solid black;
   padding: 5px 35px 7px 5px;
   box-sizing: border-box;
-  /* text-align: center; */
 }
 
 textarea {
@@ -120,10 +115,6 @@ textarea::placeholder {
   letter-spacing: 1.3px;
   font-size: 23px;
   margin-top: 10px;
-}
-
-h1 {
-  margin-bottom: 8px;
 }
 
 .add-btn {
