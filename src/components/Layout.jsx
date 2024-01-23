@@ -13,16 +13,6 @@ const Layout = () => {
         },
     ]);
 
-    const delButtonClickHandler = (id) => {
-        if (window.confirm("삭제하시겠습니까?")) {
-            const newTask = tasks.filter((item) => {
-                return id !== item.id;
-            });
-
-            setTasks(newTask);
-        } return;
-    };
-
     const date = new Date().toLocaleString().slice(0, 12);
 
     return (
