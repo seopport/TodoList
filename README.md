@@ -24,7 +24,7 @@ React를 이용한 To Do List 만들기 [ [To Do List🌿](https://todo-list-seo
 - **Development :** React, Javascript, HTML, CSS
 - **Library :** [react-icons](https://react-icons.github.io/react-icons/)
 - **Design :** Figma
-- **Deployment:** Vercel - [ [To Do List🌿](https://todo-list-seopport.vercel.app/) ]
+- **Deployment:** Vercel
 
 
 
