@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
-import { PencilLine } from "lucide-react";
-import { PiPenNib } from "react-icons/pi";
 import InProgressTasks from "./InProgressTasks";
 import DoneTasks from "./DoneTasks";
+import TaskInputBox from "./TaskInputBox";
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -99,24 +98,13 @@ function App() {
         </h1>
 
         <p className="date">{date}</p>
-        <div className="task-input-box">
-          <span className="task">Task</span>
-          <div className="input-wrap">
-            <input
-              maxLength={13}
-              value={title}
-              onChange={titleChangeHandler}
-              placeholder="Enter your to-do here"
-            ></input>
-            {/* <PiPenNib onClick={addButtonClickHandler} className="add-btn" /> */}
-            <PencilLine onClick={addButtonClickHandler} className="add-btn" />
-          </div>
-          <textarea
-            value={memo}
-            onChange={memoChangeHandler}
-            placeholder="Memo"
-          />
-        </div>
+        <TaskInputBox
+          title={title}
+          titleChangeHandler={titleChangeHandler}
+          addButtonClickHandler={addButtonClickHandler}
+          memo={memo}
+          memoChangeHandler={memoChangeHandler}
+        />
 
         <div className="tasks-wrap">
           <div>
