@@ -1,5 +1,22 @@
-const DoneTasks = ({item, returnButtonClickHandler, delButtonClickHandler}) => {
-    return (
+const DoneTasks = ({tasks, setTasks,  delButtonClickHandler}) => {
+
+  const returnButtonClickHandler = (id) => {
+    const returnTask = tasks.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          isDone: false,
+        };
+      } else return item;
+    });
+    setTasks(returnTask);
+  };
+
+  return tasks.filter((item) => {
+      return item.isDone === true;
+    })
+    .map((item) => {
+      return (
         <div key={item.id} className="task-box">
                     <div className="title-in-task-box">{item.title}</div>
                     <hr className="hr2"></hr>
@@ -19,7 +36,8 @@ const DoneTasks = ({item, returnButtonClickHandler, delButtonClickHandler}) => {
                       </button>
                     </div>
                   </div>
-    )
+      )});
+
 }
 
 export default DoneTasks;

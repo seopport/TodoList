@@ -1,6 +1,21 @@
-const InProgressTasks = ({item, doneButtonClickHandler, delButtonClickHandler}) =>{
+const InProgressTasks = ({item, tasks, setTasks, delButtonClickHandler}) =>{
 
-    return (
+  const doneButtonClickHandler = (id) => {
+        const doneTask = tasks.map((item) => {
+          if (id === item.id) {
+            return {
+              ...item,
+              isDone: true,
+            };
+          } else return item;
+        });
+        setTasks(doneTask);
+      };
+
+    return tasks.filter((item) => {
+        return item.isDone === false && item.id !== 0;
+      }).map((item) => {
+        return ((
         <div key={item.id} className="task-box">
                     <div className="title-in-task-box">{item.title}</div>
                     <hr className="hr2"></hr>
@@ -20,7 +35,7 @@ const InProgressTasks = ({item, doneButtonClickHandler, delButtonClickHandler}) 
                       </button>
                     </div>
                   </div>
-    )
+    ))})
 }
 
 export default InProgressTasks
