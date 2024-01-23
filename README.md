@@ -1,7 +1,7 @@
 # To Do List🌿
 
 React를 이용한 To Do List 만들기 
-[To Do List🌿](todo-list-seopport.vercel.app)
+[To Do List🌿](https://todo-list-seopport.vercel.app/) 
 
 <br>
 
