@@ -99,8 +99,7 @@ yarn start
 
 + **App.jsx** - 메인 컴포넌트입니다.
 + **TaskInputBox.jsx** - 입력폼을 담당하는 컴포넌트입니다.
-+ **InProgressTasks.jsx** - 진행 중인 할 일들을 보여주는 컴포넌트입니다.
-+ **DoneTasks.jsx** - 완료된 할 일들을 보여주는 컴포넌트입니다.
++ **Tasks.jsx** - 추가한 할 일들을 상태에 따라 그려주는 컴포넌트 입니다.
 
 
 <br>
