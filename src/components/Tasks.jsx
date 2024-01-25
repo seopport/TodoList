@@ -1,6 +1,6 @@
 const Tasks = ({ tasks, setTasks, isDone }) => {
 
-    const delButtonClickHandler = (id) => {
+    const handleDeleteButtonClick = (id) => {
         if (window.confirm("삭제하시겠습니까?")) {
             const newTask = tasks.filter((item) => {
                 return id !== item.id;
@@ -10,7 +10,7 @@ const Tasks = ({ tasks, setTasks, isDone }) => {
         } return;
     };
 
-    const doneButtonClickHandler = (id) => {
+    const handleDoneButtonClick = (id) => {
         const doneTask = tasks.map((item) => {
             if (id === item.id) {
                 return {
@@ -22,7 +22,7 @@ const Tasks = ({ tasks, setTasks, isDone }) => {
         setTasks(doneTask);
     };
 
-    const returnButtonClickHandler = (id) => {
+    const handleReturnButtonClick = (id) => {
         const returnTask = tasks.map((item) => {
             if (item.id === id) {
                 return {
@@ -47,21 +47,21 @@ const Tasks = ({ tasks, setTasks, isDone }) => {
                         <>
                             <button
                                 className="task-progress-btn"
-                                onClick={() => returnButtonClickHandler(item.id)}
+                                onClick={() => handleReturnButtonClick(item.id)}
                             >되돌리기</button>
                             <button
                                 className="task-progress-btn"
-                                onClick={() => delButtonClickHandler(item.id)}
+                                onClick={() => handleDeleteButtonClick(item.id)}
                             >삭제</button>
                         </>
                         : <>
                             <button
                                 className="task-progress-btn"
-                                onClick={() => doneButtonClickHandler(item.id)}
+                                onClick={() => handleDoneButtonClick(item.id)}
                             >완료</button>
                             <button
                                 className="task-progress-btn"
-                                onClick={() => delButtonClickHandler(item.id)}
+                                onClick={() => handleDeleteButtonClick(item.id)}
                             >삭제</button>
                         </>
                     }

@@ -1,20 +1,20 @@
 import { PencilLine } from "lucide-react";
 import { useState } from "react";
+import { nanoid } from "nanoid";
 
-const TaskInputBox = ({tasks, setTasks}) => {
-  
+const TaskInputBox = ({ tasks, setTasks }) => {
 
   const [title, setTitle] = useState("");
   const [memo, setMemo] = useState("");
 
-  const titleChangeHandler = (e) => {
+  const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
-  const memoChangeHandler = (e) => {
+  const handleMemoChange = (e) => {
     setMemo(e.target.value);
   };
 
-  const addButtonClickHandler = () => {
+  const handleAddButtonClick = () => {
     if (title.trim() === "") {
       alert("할 일을 입력하세요.");
       const input = document.getElementById("Input");
@@ -28,10 +28,8 @@ const TaskInputBox = ({tasks, setTasks}) => {
         return;
     }
 
-    const lastIndexOfId = tasks.slice(-1)[0].id;
-
     const newTask = {
-      id: lastIndexOfId + 1, //마지막 요소의 아이디에 + 1
+      id: nanoid(),
       title: title,
       memo: memo,
       isDone: false,
@@ -42,26 +40,25 @@ const TaskInputBox = ({tasks, setTasks}) => {
   };
 
 
-    return (
-        <div className="task-input-box">
-          <span className="task">Task</span>
-          <div className="input-wrap">
-            <input id="Input" autoFocus
-              maxLength={20}
-              value={title}
-              onChange={titleChangeHandler}
-              placeholder="Enter your to-do here"
-            ></input>
-            {/* <PiPenNib onClick={addButtonClickHandler} className="add-btn" /> */}
-            <PencilLine onClick={addButtonClickHandler} className="add-btn" />
-          </div>
-          <textarea
-            value={memo}
-            onChange={memoChangeHandler}
-            placeholder="Memo"
-          />
-        </div>
-    )
+  return (
+    <div className="task-input-box">
+      <span className="task">Task</span>
+      <div className="input-wrap">
+        <input id="Input" autoFocus
+          maxLength={20}
+          value={title}
+          onChange={handleTitleChange}
+          placeholder="Enter your to-do here"
+        ></input>
+        <PencilLine onClick={handleAddButtonClick} className="add-btn" />
+      </div>
+      <textarea
+        value={memo}
+        onChange={handleMemoChange}
+        placeholder="Memo"
+      />
+    </div>
+  )
 }
 
 export default TaskInputBox;
